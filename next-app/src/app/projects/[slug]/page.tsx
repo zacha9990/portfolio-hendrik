@@ -1,17 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { getProject, getProjects } from '@/lib/payload'
+import { getProject } from '@/lib/payload'
 import TechBadge from '@/components/TechBadge'
 import { notFound } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 interface Props {
   params: { slug: string }
-}
-
-export async function generateStaticParams() {
-  const data = await getProjects()
-  return (data?.docs ?? []).map((p: { slug: string }) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
