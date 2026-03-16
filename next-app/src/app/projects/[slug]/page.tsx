@@ -58,8 +58,8 @@ export default async function ProjectDetailPage({ params }: Props) {
         {/* Tech Stack */}
         {project.tech_stack?.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            {project.tech_stack.map((t: string) => (
-              <TechBadge key={t} name={t} />
+            {project.tech_stack.map((t: { id?: string; name: string }, i: number) => (
+              <TechBadge key={t.id ?? i} name={t.name} />
             ))}
           </div>
         )}

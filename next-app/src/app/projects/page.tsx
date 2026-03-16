@@ -12,7 +12,7 @@ interface Project {
   company?: string
   period?: string
   category?: string[]
-  tech_stack?: string[]
+  tech_stack?: { id?: string; name: string }[]
   thumbnail?: { url: string; alt?: string }
   is_confidential?: boolean
   is_featured?: boolean

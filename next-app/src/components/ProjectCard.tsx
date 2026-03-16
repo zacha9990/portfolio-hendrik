@@ -10,7 +10,7 @@ interface Project {
   company?: string
   period?: string
   category?: string[]
-  tech_stack?: string[]
+  tech_stack?: { id?: string; name: string }[]
   thumbnail?: { url: string; alt?: string }
   is_confidential?: boolean
   is_featured?: boolean
@@ -60,8 +60,8 @@ export default function ProjectCard({ project }: { project: Project }) {
 
         {project.tech_stack && project.tech_stack.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-auto pt-2">
-            {project.tech_stack.slice(0, 4).map((t) => (
-              <TechBadge key={t} name={t} />
+            {project.tech_stack.slice(0, 4).map((t, i) => (
+              <TechBadge key={t.id ?? i} name={t.name} />
             ))}
             {project.tech_stack.length > 4 && (
               <span className="text-xs text-text-secondary">+{project.tech_stack.length - 4}</span>

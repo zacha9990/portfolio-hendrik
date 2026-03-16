@@ -6,8 +6,8 @@ interface Experience {
   role: string
   location?: string
   period?: string
-  tech_stack?: string[]
-  highlights?: string[]
+  tech_stack?: { id?: string; name: string }[]
+  highlights?: { id?: string; item: string }[]
 }
 
 export default function ExperienceItem({ exp }: { exp: Experience }) {
@@ -33,9 +33,9 @@ export default function ExperienceItem({ exp }: { exp: Experience }) {
         {exp.highlights && exp.highlights.length > 0 && (
           <ul className="space-y-1">
             {exp.highlights.map((h, i) => (
-              <li key={i} className="text-xs text-text-secondary leading-relaxed flex gap-2">
+              <li key={h.id ?? i} className="text-xs text-text-secondary leading-relaxed flex gap-2">
                 <span className="text-accent mt-0.5 shrink-0">▸</span>
-                <span>{h}</span>
+                <span>{h.item}</span>
               </li>
             ))}
           </ul>
@@ -43,8 +43,8 @@ export default function ExperienceItem({ exp }: { exp: Experience }) {
 
         {exp.tech_stack && exp.tech_stack.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-1">
-            {exp.tech_stack.map((t) => (
-              <TechBadge key={t} name={t} />
+            {exp.tech_stack.map((t, i) => (
+              <TechBadge key={t.id ?? i} name={t.name} />
             ))}
           </div>
         )}
