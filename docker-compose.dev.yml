@@ -1,37 +1,15 @@
 services:
   postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
     ports:
       - "5432:5432"
-
-  payload-cms:
-    build:
-      context: ./payload-cms
-      target: dev
-    volumes:
-      - ./payload-cms/src:/app/src
-      - ./payload-cms/media:/app/media
     environment:
-      PAYLOAD_PUBLIC_SERVER_URL: http://localhost:3001
-      DATABASE_URI: ${DATABASE_URL}
-      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
-    ports:
-      - "3001:3000"
-    command: npm run dev
-
-  next-app:
-    build:
-      context: ./next-app
-      target: dev
+      POSTGRES_USER: hendrik
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: portfolio_local
     volumes:
-      - ./next-app/src:/app/src
-      - ./next-app/public:/app/public
-    environment:
-      NEXT_PUBLIC_PAYLOAD_API: http://localhost:3001/api
-      NEXT_PUBLIC_SITE_URL: http://localhost:3000
-    ports:
-      - "3000:3000"
-    command: npm run dev
+      - postgres_local:/var/lib/postgresql/data
 
-  nginx:
-    profiles:
-      - production
+volumes:
+  postgres_local:

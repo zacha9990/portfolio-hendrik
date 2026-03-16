@@ -15,8 +15,9 @@ const start = async () => {
     },
   })
 
-  app.listen(3000, async () => {
-    payload.logger.info('Server listening on port 3000')
+  const port = process.env.PORT || 3000
+  app.listen(port, async () => {
+    payload.logger.info(`Server listening on port ${port}`)
   })
 }
 

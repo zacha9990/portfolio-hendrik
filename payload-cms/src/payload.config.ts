@@ -53,11 +53,13 @@ export default buildConfig({
     'https://qz-hendrik.com',
     'https://www.qz-hendrik.com',
     'http://localhost:3000',
+    'http://localhost:3001',
   ],
   csrf: [
     'https://qz-hendrik.com',
     'https://www.qz-hendrik.com',
     'http://localhost:3000',
+    'http://localhost:3001',
   ],
   typescript: { outputFile: path.resolve(__dirname, 'payload-types.ts') },
 })
