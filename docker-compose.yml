@@ -22,6 +22,8 @@ services:
       DATABASE_URI: ${DATABASE_URL}
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
       PAYLOAD_PUBLIC_SERVER_URL: https://${DOMAIN}:8443
+    volumes:
+      - ./payload-cms/media:/app/media
     networks:
       - portfolio_net
 
