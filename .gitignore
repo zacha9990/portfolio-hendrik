@@ -1,0 +1,22 @@
+# Environment files
+.env
+.env.production
+.env.local
+
+# Node
+node_modules/
+.next/
+dist/
+
+# Docker volumes
+postgres_data/
+
+# Payload media uploads
+payload-cms/media/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
