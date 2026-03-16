@@ -20,6 +20,7 @@ services:
       - postgres
     environment:
       NODE_ENV: development
+      PAYLOAD_CONFIG_PATH: /app/dist/payload.config.js
       DATABASE_URI: ${DATABASE_URL}
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
       PAYLOAD_PUBLIC_SERVER_URL: https://${DOMAIN}:8443
