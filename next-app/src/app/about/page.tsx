@@ -53,7 +53,8 @@ export default async function AboutPage() {
         <section>
           <h2 className="text-xl font-semibold text-text-primary mb-6">Work Experience</h2>
           <div>
-            {experience.docs.map((exp: { id: string }) => (
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {experience.docs.map((exp: any) => (
               <ExperienceItem key={exp.id} exp={exp} />
             ))}
           </div>
