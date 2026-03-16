@@ -5,9 +5,9 @@ const Demos: CollectionConfig = {
   access: { read: () => true },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'subdomain', 'port', 'is_active'],
+    defaultColumns: ['title', 'port', 'is_active'],
     description:
-      'Each demo entry maps a subdomain + port to a running app on the VPS. After saving, run the nginx-sync script on the VPS to apply changes.',
+      'Each demo entry maps a port to a running app on the VPS. Demo URL: https://qz-hendrik.com:<PORT>. After saving, make sure Nginx on the VPS exposes that port with SSL.',
   },
   fields: [
     { name: 'title', type: 'text', required: true },
@@ -16,11 +16,12 @@ const Demos: CollectionConfig = {
     {
       name: 'subdomain',
       type: 'text',
-      required: true,
-      unique: true,
-      label: 'Subdomain prefix (e.g. "rumahtap" → rumahtap.qz-hendrik.com)',
+      required: false,
+      unique: false,
+      label: 'Subdomain prefix (opsional — untuk masa depan jika pakai wildcard SSL)',
       admin: {
-        description: 'Lowercase, no spaces, no dots. Just the prefix before the domain.',
+        description:
+          'Sementara tidak dipakai karena SSL gratis tidak mendukung wildcard. Kosongkan saja.',
       },
     },
     {
@@ -28,9 +29,10 @@ const Demos: CollectionConfig = {
       type: 'number',
       required: true,
       unique: true,
-      label: 'Internal VPS port (e.g. 3002)',
+      label: 'Port publik VPS (e.g. 3002 → https://qz-hendrik.com:3002)',
       admin: {
-        description: 'The port your demo app listens on inside the VPS. Must be unique per demo.',
+        description:
+          'Port yang diekspos ke publik via Nginx + SSL. Demo akan diakses di https://qz-hendrik.com:<port>. Harus unik per demo.',
       },
     },
     { name: 'thumbnail', type: 'upload', relationTo: 'media' },
