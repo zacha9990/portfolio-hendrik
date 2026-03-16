@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Link from 'next/link'
 import { getProjects, getSiteSettings } from '@/lib/payload'
 import ProjectCard from '@/components/ProjectCard'

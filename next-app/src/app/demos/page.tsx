@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import type { Metadata } from 'next'
 import { getDemos } from '@/lib/payload'
 import DemoCard from '@/components/DemoCard'
