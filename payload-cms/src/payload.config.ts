@@ -46,6 +46,7 @@ export default buildConfig({
   globals: [SiteSettings],
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URI },
+    push: true,
   }),
   cors: [
     'https://qz-hendrik.com',
