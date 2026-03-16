@@ -21,7 +21,7 @@ services:
     environment:
       DATABASE_URI: ${DATABASE_URL}
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
-      PAYLOAD_PUBLIC_SERVER_URL: https://cms.${DOMAIN}
+      PAYLOAD_PUBLIC_SERVER_URL: https://${DOMAIN}:8443
     networks:
       - portfolio_net
 
@@ -33,7 +33,7 @@ services:
     depends_on:
       - payload-cms
     environment:
-      NEXT_PUBLIC_PAYLOAD_API: https://cms.${DOMAIN}/api
+      NEXT_PUBLIC_PAYLOAD_API: https://${DOMAIN}:8443/api
       NEXT_PUBLIC_SITE_URL: https://${DOMAIN}
     networks:
       - portfolio_net
@@ -44,10 +44,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "8443:8443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./ssl:/etc/ssl/portfolio:ro
     depends_on:
       - next-app
       - payload-cms
