@@ -2,6 +2,7 @@ import { GlobalConfig } from 'payload/types'
 
 const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
+  access: { read: () => true },
   fields: [
     { name: 'tagline', type: 'text', label: 'Hero Tagline' },
     { name: 'bio_short', type: 'textarea', label: 'Short Bio (for hero section)' },

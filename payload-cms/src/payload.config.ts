@@ -26,6 +26,7 @@ export default buildConfig({
     ContactSubmissions,
     {
       slug: 'media',
+      access: { read: () => true },
       upload: {
         staticDir: path.resolve(__dirname, '../media'),
         imageSizes: [

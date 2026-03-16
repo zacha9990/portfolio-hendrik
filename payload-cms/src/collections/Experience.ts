@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload/types'
 
 const Experience: CollectionConfig = {
   slug: 'experience',
+  access: { read: () => true },
   admin: {
     useAsTitle: 'company',
     defaultColumns: ['company', 'role', 'period'],

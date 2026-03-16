@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload/types'
 
 const Demos: CollectionConfig = {
   slug: 'demos',
+  access: { read: () => true },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'subdomain', 'port', 'is_active'],

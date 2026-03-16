@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload/types'
 
 const Projects: CollectionConfig = {
   slug: 'projects',
+  access: { read: () => true },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'company', 'period', 'is_featured'],

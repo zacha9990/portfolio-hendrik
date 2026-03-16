@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload/types'
 
 const Skills: CollectionConfig = {
   slug: 'skills',
+  access: { read: () => true },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'category'],
