@@ -14,6 +14,12 @@ const nextConfig = {
         hostname: 'qz-hendrik.com',
         pathname: '/media/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'qz-hendrik.com',
+        port: '8443',
+        pathname: '/media/**',
+      },
     ],
   },
 }

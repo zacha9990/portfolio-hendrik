@@ -43,7 +43,7 @@ export async function getSkills() {
 }
 
 export async function getSiteSettings() {
-  const res = await fetch(`${API}/globals/site-settings`, { next: { revalidate: 3600 } })
+  const res = await fetch(`${API}/globals/site-settings?depth=1`, { next: { revalidate: 3600 } })
   if (!res.ok) return null
   return res.json()
 }
