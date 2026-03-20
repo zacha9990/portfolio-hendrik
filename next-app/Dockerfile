@@ -10,6 +10,10 @@ CMD ["npm", "run", "dev"]
 # ---- Production build ----
 FROM node:20-alpine AS builder
 WORKDIR /app
+ARG NEXT_PUBLIC_PAYLOAD_API
+ARG NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_PAYLOAD_API=$NEXT_PUBLIC_PAYLOAD_API
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 COPY package*.json ./
 RUN npm install
 COPY . .

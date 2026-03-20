@@ -33,6 +33,9 @@ services:
     build:
       context: ./next-app
       target: runner
+      args:
+        NEXT_PUBLIC_PAYLOAD_API: https://${DOMAIN}:8443/api
+        NEXT_PUBLIC_SITE_URL: https://${DOMAIN}
     restart: unless-stopped
     depends_on:
       - payload-cms
