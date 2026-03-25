@@ -28,7 +28,7 @@ export async function getDemos() {
 
 export async function getExperience() {
   const res = await fetch(`${API}/experience?sort=sort_order&limit=20`, {
-    next: { revalidate: 3600 },
+    cache: 'no-store',
   })
   if (!res.ok) return { docs: [] }
   return res.json()
