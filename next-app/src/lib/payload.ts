@@ -48,6 +48,25 @@ export async function getSiteSettings() {
   return res.json()
 }
 
+export async function getPosts(params?: { featured?: boolean; tag?: string }) {
+  const query = new URLSearchParams({ limit: '50', 'where[status][equals]': 'published', sort: '-published_at' })
+  if (params?.featured) query.append('where[is_featured][equals]', 'true')
+  if (params?.tag) query.append('where[tags.tag][contains]', params.tag)
+  const res = await fetch(`${API}/posts?${query}&depth=1`, { cache: 'no-store' })
+  if (!res.ok) return { docs: [] }
+  return res.json()
+}
+
+export async function getPost(slug: string) {
+  const res = await fetch(
+    `${API}/posts?where[slug][equals]=${slug}&where[status][equals]=published&depth=2`,
+    { cache: 'no-store' },
+  )
+  if (!res.ok) return null
+  const data = await res.json()
+  return data.docs?.[0] ?? null
+}
+
 export async function submitContact(data: {
   name: string
   email: string

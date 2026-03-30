@@ -9,6 +9,7 @@ import Demos from './collections/Demos'
 import Experience from './collections/Experience'
 import Skills from './collections/Skills'
 import ContactSubmissions from './collections/ContactSubmissions'
+import Posts from './collections/Posts'
 import SiteSettings from './globals/SiteSettings'
 
 export default buildConfig({
@@ -24,6 +25,7 @@ export default buildConfig({
     Experience,
     Skills,
     ContactSubmissions,
+    Posts,
     {
       slug: 'media',
       access: { read: () => true },
