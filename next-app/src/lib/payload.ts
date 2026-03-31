@@ -4,14 +4,14 @@ export async function getProjects(params?: { featured?: boolean; category?: stri
   const query = new URLSearchParams({ limit: '100' })
   if (params?.featured) query.append('where[is_featured][equals]', 'true')
   if (params?.category) query.append('where[category][contains]', params.category)
-  const res = await fetch(`${API}/projects?${query}`, { next: { revalidate: 3600 } })
+  const res = await fetch(`${API}/projects?${query}`, { cache: 'no-store' })
   if (!res.ok) return { docs: [] }
   return res.json()
 }
 
 export async function getProject(slug: string) {
   const res = await fetch(`${API}/projects?where[slug][equals]=${slug}&depth=2`, {
-    next: { revalidate: 3600 },
+    cache: 'no-store',
   })
   if (!res.ok) return null
   const data = await res.json()
