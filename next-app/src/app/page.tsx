@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { getProjects, getSiteSettings } from '@/lib/payload'
 import ProjectCard from '@/components/ProjectCard'
 import AvailabilityBadge from '@/components/AvailabilityBadge'
@@ -15,7 +16,8 @@ export default async function HomePage() {
     <>
       {/* Hero */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-32 pb-20">
-        <div className="max-w-2xl flex flex-col gap-5">
+        <div className="flex flex-col-reverse sm:flex-row items-center sm:items-start gap-10">
+        <div className="flex-1 flex flex-col gap-5">
           {settings?.availability_status && (
             <div>
               <AvailabilityBadge status={settings.availability_status} />
@@ -53,6 +55,20 @@ export default async function HomePage() {
               Contact Me
             </Link>
           </div>
+        </div>
+
+        {settings?.profile_photo?.url && (
+          <div className="flex-shrink-0">
+            <Image
+              src={settings.profile_photo.url}
+              alt={settings.profile_photo.alt ?? 'Profile photo'}
+              width={180}
+              height={180}
+              className="rounded-full object-cover ring-2 ring-border"
+              priority
+            />
+          </div>
+        )}
         </div>
       </section>
 
