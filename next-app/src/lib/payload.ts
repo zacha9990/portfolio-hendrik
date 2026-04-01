@@ -1,4 +1,4 @@
-const API = process.env.NEXT_PUBLIC_PAYLOAD_API
+const API = process.env.PAYLOAD_INTERNAL_API || process.env.NEXT_PUBLIC_PAYLOAD_API
 
 export async function getProjects(params?: { featured?: boolean; category?: string }) {
   const query = new URLSearchParams({ limit: '100' })
