@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from 'payload/components/utilities'
 
 type Doc = {
   page: string
@@ -37,15 +36,13 @@ const styles = {
 }
 
 const AnalyticsView = () => {
-  const { token } = useAuth()
   const [docs, setDocs] = useState<Doc[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    if (!token) return
     fetch('/api/page-views?limit=10000&sort=-createdAt', {
-      headers: { Authorization: `JWT ${token}` },
+      credentials: 'include',
     })
       .then(r => r.json())
       .then((json: any) => {
