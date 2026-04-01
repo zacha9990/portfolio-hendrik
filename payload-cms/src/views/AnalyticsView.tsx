@@ -47,7 +47,7 @@ const AnalyticsView = () => {
       headers: { Authorization: `JWT ${token}` },
     })
       .then(r => r.json())
-      .then(json => {
+      .then((json: any) => {
         setDocs(json.docs || [])
         setLoading(false)
       })
@@ -68,10 +68,10 @@ const AnalyticsView = () => {
     return acc
   }, {} as Record<string, number>)
 
-  const topPages = Object.entries(byPage).sort((a, b) => b[1] - a[1]).slice(0, 10)
-  const topCountries = Object.entries(byCountry).sort((a, b) => b[1] - a[1]).slice(0, 10)
-  const maxPageCount = topPages[0]?.[1] || 1
-  const maxCountryCount = topCountries[0]?.[1] || 1
+  const topPages = (Object.entries(byPage) as [string, number][]).sort((a, b) => b[1] - a[1]).slice(0, 10)
+  const topCountries = (Object.entries(byCountry) as [string, number][]).sort((a, b) => b[1] - a[1]).slice(0, 10)
+  const maxPageCount: number = (topPages[0]?.[1] as number) || 1
+  const maxCountryCount: number = (topCountries[0]?.[1] as number) || 1
 
   return (
     <div style={styles.wrap}>

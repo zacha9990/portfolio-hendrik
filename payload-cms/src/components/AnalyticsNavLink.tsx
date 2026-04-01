@@ -13,8 +13,6 @@ const AnalyticsNavLink = () => (
       fontSize: 13,
       opacity: 0.85,
     }}
-    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
-    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '0.85' }}
   >
     <span>📊</span>
     <span>Analytics</span>
