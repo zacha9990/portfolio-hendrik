@@ -53,7 +53,7 @@ const AnalyticsView = () => {
         setError(true)
         setLoading(false)
       })
-  }, [token])
+  }, [])
 
   const byPage = docs.reduce((acc, v) => {
     acc[v.page] = (acc[v.page] || 0) + 1
