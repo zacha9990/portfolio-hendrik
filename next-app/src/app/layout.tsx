@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import PageTracker from '@/components/PageTracker'
 
 export const metadata: Metadata = {
   title: 'Zacharias Hendrik — Backend Engineer',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <body className="bg-bg text-text-primary min-h-screen font-sans antialiased">
+        <PageTracker />
         <Navbar />
         <main>{children}</main>
         <Footer />

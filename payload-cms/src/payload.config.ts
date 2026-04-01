@@ -10,13 +10,25 @@ import Experience from './collections/Experience'
 import Skills from './collections/Skills'
 import ContactSubmissions from './collections/ContactSubmissions'
 import Posts from './collections/Posts'
+import PageViews from './collections/PageViews'
 import SiteSettings from './globals/SiteSettings'
+import AnalyticsView from './views/AnalyticsView'
+import AnalyticsNavLink from './components/AnalyticsNavLink'
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3001',
   admin: {
     user: 'users',
     bundler: webpackBundler(),
+    components: {
+      views: {
+        Analytics: {
+          Component: AnalyticsView,
+          path: '/analytics',
+        },
+      },
+      afterNavLinks: [AnalyticsNavLink],
+    },
   },
   editor: slateEditor({}),
   collections: [
@@ -26,6 +38,7 @@ export default buildConfig({
     Skills,
     ContactSubmissions,
     Posts,
+    PageViews,
     {
       slug: 'media',
       access: { read: () => true },

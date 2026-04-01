@@ -42,6 +42,7 @@ services:
     environment:
       NEXT_PUBLIC_PAYLOAD_API: https://${DOMAIN}:8443/api
       NEXT_PUBLIC_SITE_URL: https://${DOMAIN}
+      PAYLOAD_INTERNAL_API: http://payload-cms:3000/api
     networks:
       - portfolio_net
 
